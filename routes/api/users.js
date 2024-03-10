@@ -26,4 +26,5 @@ router.get("/current", verifyToken, getExistingUser);
 // Wylogowanie użytkownika
 router.get("/logout", verifyToken, logoutExistingUser);
 router.get("/logout", verifyToken, logoutUser);
+router.patch("/avatars", verifyToken, updateAvatar);
 export default router;
