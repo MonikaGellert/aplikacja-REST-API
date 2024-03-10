@@ -5,7 +5,7 @@ import { createContacts } from "../../controllers/contacts/createContacts.js";
 import { deleteContacts } from "../../controllers/contacts/deleteContacts.js";
 import { updateContacts } from "../../controllers/contacts/updateContacts.js";
 
-const router = express.Router();
+const router = expres.Router();
 
 router.get("/", indexContacts);
 
