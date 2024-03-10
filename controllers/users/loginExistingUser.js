@@ -2,15 +2,22 @@ import User from "../../models/userModel.js";
 import jwt from "jsonwebtoken";
 export async function loginExistingUser(req, res) {
   try {
-    const token = jwt.sign({ id: User._id }, "your-secret-key", {
+    const user = await User.findOne({ email: req.body.email });
+
+    if (!user) {
+      return res.status(401).json({ message: "Email or password is wrong" });
+    }
+
+    const token = jwt.sign({ id: user._id }, "my-secret-key", {
       expiresIn: "1h",
     });
-    User.token = token;
-    await User.save();
+
+    user.token = token;
+    await user.save();
 
     res.status(200).json({
       token,
-      user: { email: User.email, subscription: User.subscription },
+      user: { email: user.email, subscription: user.subscription },
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
