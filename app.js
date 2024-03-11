@@ -2,6 +2,7 @@ import express from "express";
 import logger from "morgan";
 import cors from "cors";
 import contactsRouter from "./routes/api/contacts.js";
+const validationApp = require('./createContactsValidator.js');
 
 const app = express();
 
@@ -21,4 +22,7 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: err.message });
 });
 
+validationApp.listen(3000, () => {
+  console.log('Główny serwer nasłuchuje na porcie 3000');
+});
 export default app;
