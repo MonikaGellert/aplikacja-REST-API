@@ -1,6 +1,6 @@
 import Contact from "../../models/contactModel.js";
 
-export async function indexContacts(req, res, next) {
+export async function getAllContacts(req, res, next) {
   try {
     const contacts = await Contact.find();
     return res.json(contacts);
