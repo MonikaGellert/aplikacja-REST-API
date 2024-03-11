@@ -13,17 +13,16 @@ const router = express.Router();
 
 // Rejestracja użytkownika
 router.post("/signup", registerNewUser);
-router.post("/signup", registerExistingUser);
+
 
 // Logowanie użytkownika
 router.post("/login", loginUser);
-router.post("/login", loginExistingUser);
+
 
 // Pobranie danych bieżącego użytkownika
 router.get("/current", verifyToken, getCurrentUser);
-router.get("/current", verifyToken, getExistingUser);
+
 
 // Wylogowanie użytkownika
-router.get("/logout", verifyToken, logoutExistingUser);
 router.get("/logout", verifyToken, logoutUser);
 export default router;
