@@ -1,6 +1,6 @@
 import Contact from "../../models/contactModel.js";
 
-export async function updateContacts(req, res, next) {
+export async function updateContact(req, res, next) {
   const contactId = req.params.contactId;
   const { name, email, phone } = req.body;
 
